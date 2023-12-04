@@ -139,24 +139,14 @@ login-leaks:
 
 login:
 	@cat SecLists/Passwords/500-worst-passwords.txt \
-		SecLists/Passwords/2020-200_most_used_passwords.txt \
 		SecLists/Passwords/Common-Credentials/100k-most-used-passwords-NCSC.txt \
-		SecLists/Passwords/Common-Credentials/best1050.txt \
-		SecLists/Passwords/Common-Credentials/common-passwords-win.txt \
 		SecLists/Passwords/Common-Credentials/top-20-common-SSH-passwords.txt \
-		SecLists/Passwords/Common-Credentials/top-passwords-shortlist.txt \
-		SecLists/Passwords/Common-Credentials/worst-passwords-2017-top100-slashdata.txt \
 		SecLists/Passwords/Default-Credentials/default-passwords.txt \
 		SecLists/Passwords/Keyboard-Walks/Keyboard-Combinations.txt \
-		SecLists/Passwords/Keyboard-Walks/walk-the-line.txt \
 		SecLists/Passwords/Permutations/1337speak.txt \
-		SecLists/Passwords/Permutations/korelogic-password.txt \
 		SecLists/Passwords/Permutations/password-permutations.txt \
 		| sort -uf >.tmp.passwords
 	@cat SecLists/Usernames/cirt-default-usernames.txt \
-		SecLists/Usernames/Names/familynames-usa-top1000.txt \
-		SecLists/Usernames/Names/femalenames-usa-top1000.txt \
-		SecLists/Usernames/Names/malenames-usa-top1000.txt \
 		SecLists/Usernames/Names/names.txt \
 		SecLists/Usernames/sap-default-usernames.txt \
 		SecLists/Usernames/top-usernames-shortlist.txt \
