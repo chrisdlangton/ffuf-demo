@@ -152,7 +152,7 @@ login:
 		SecLists/Passwords/Permutations/1337speak.txt \
 		SecLists/Passwords/Permutations/korelogic-password.txt \
 		SecLists/Passwords/Permutations/password-permutations.txt \
-		| sort | uniq >.tmp.passwords
+		| sort -uf >.tmp.passwords
 	@cat SecLists/Usernames/cirt-default-usernames.txt \
 		SecLists/Usernames/Names/familynames-usa-top1000.txt \
 		SecLists/Usernames/Names/femalenames-usa-top1000.txt \
@@ -160,7 +160,7 @@ login:
 		SecLists/Usernames/Names/names.txt \
 		SecLists/Usernames/sap-default-usernames.txt \
 		SecLists/Usernames/top-usernames-shortlist.txt \
-		| sort | uniq >.tmp.usernames
+		| sort -uf >.tmp.usernames
 	ffuf \
         -of html -o .results/login.html \
 		-request inputs/login-req.txt \
