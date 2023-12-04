@@ -24,7 +24,7 @@ args:
         -of json -o .results/args.json \
         -u 'http://localhost:3000/rest/user/login?FUZZ=1'
 
-login:
+login-leaks:
 	@cat SecLists/Passwords/500-worst-passwords.txt \
 		SecLists/Passwords/2020-200_most_used_passwords.txt \
 		SecLists/Passwords/clarkson-university-82.txt \
@@ -92,25 +92,9 @@ login:
 		SecLists/Passwords/Leaked-Databases/phpbb-withcount.txt \
 		SecLists/Passwords/Leaked-Databases/porn-unknown.txt \
 		SecLists/Passwords/Leaked-Databases/porn-unknown-withcount.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-05.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-10.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-15.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-20.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-25.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-30.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-35.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-40.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-45.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-50.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-55.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-60.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-65.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-70.txt \
-		SecLists/Passwords/Leaked-Databases/rockyou-75.txt \
 		SecLists/Passwords/Leaked-Databases/singles.org.txt \
 		SecLists/Passwords/Leaked-Databases/singles.org-withcount.txt \
 		SecLists/Passwords/Leaked-Databases/tuscl.txt \
-		SecLists/Passwords/Leaked-Databases/youporn2012-raw.txt \
 		SecLists/Passwords/Leaked-Databases/youporn2012.txt \
 		SecLists/Passwords/Malware/conficker.txt \
 		SecLists/Passwords/Malware/mirai-botnet.txt \
@@ -132,7 +116,56 @@ login:
 		SecLists/Usernames/xato-net-10-million-usernames.txt \
 		>.tmp.usernames
 	ffuf \
-        -of html -o .results/args.html \
+        -of html -o .results/login-leaks.html \
+		-request inputs/login-req.txt \
+		-request-proto http \
+		-mode clusterbomb \
+		-w .tmp.usernames:USERFUZZ \
+		-w .tmp.passwords:PASSFUZZ \
+		-mc 200
+	@rm .tmp.usernames .tmp.passwords
+
+login:
+	@cat SecLists/Passwords/500-worst-passwords.txt \
+		SecLists/Passwords/2020-200_most_used_passwords.txt \
+		SecLists/Passwords/Common-Credentials/10k-most-common.txt \
+		SecLists/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt \
+		SecLists/Passwords/Common-Credentials/100k-most-used-passwords-NCSC.txt \
+		SecLists/Passwords/Common-Credentials/best1050.txt \
+		SecLists/Passwords/Common-Credentials/common-passwords-win.txt \
+		SecLists/Passwords/Common-Credentials/top-20-common-SSH-passwords.txt \
+		SecLists/Passwords/Common-Credentials/top-passwords-shortlist.txt \
+		SecLists/Passwords/Common-Credentials/worst-passwords-2017-top100-slashdata.txt \
+		SecLists/Passwords/Default-Credentials/avaya_defaultpasslist.txt \
+		SecLists/Passwords/Default-Credentials/db2-betterdefaultpasslist.txt \
+		SecLists/Passwords/Default-Credentials/default-passwords.txt \
+		SecLists/Passwords/Default-Credentials/ftp-betterdefaultpasslist.txt \
+		SecLists/Passwords/Default-Credentials/mssql-betterdefaultpasslist.txt \
+		SecLists/Passwords/Default-Credentials/oracle-betterdefaultpasslist.txt \
+		SecLists/Passwords/Default-Credentials/postgres-betterdefaultpasslist.txt \
+		SecLists/Passwords/Default-Credentials/ssh-betterdefaultpasslist.txt \
+		SecLists/Passwords/Default-Credentials/telnet-betterdefaultpasslist.txt \
+		SecLists/Passwords/Default-Credentials/vnc-betterdefaultpasslist.txt \
+		SecLists/Passwords/Default-Credentials/windows-betterdefaultpasslist.txt \
+		SecLists/Passwords/Keyboard-Walks/Keyboard-Combinations.txt \
+		SecLists/Passwords/Keyboard-Walks/walk-the-line.txt \
+		SecLists/Passwords/Permutations/1337speak.txt \
+		SecLists/Passwords/Permutations/korelogic-password.txt \
+		SecLists/Passwords/Permutations/password-permutations.txt \
+		>.tmp.passwords
+	@cat SecLists/Usernames/cirt-default-usernames.txt \
+		SecLists/Usernames/Honeypot-Captures/multiplesources-users-fabian-fingerle.de.txt \
+		SecLists/Usernames/mssql-usernames-nansh0u-guardicore.txt \
+		SecLists/Usernames/Names/familynames-usa-top1000.txt \
+		SecLists/Usernames/Names/femalenames-usa-top1000.txt \
+		SecLists/Usernames/Names/malenames-usa-top1000.txt \
+		SecLists/Usernames/Names/names.txt \
+		SecLists/Usernames/sap-default-usernames.txt \
+		SecLists/Usernames/top-usernames-shortlist.txt \
+		SecLists/Usernames/xato-net-10-million-usernames.txt \
+		>.tmp.usernames
+	ffuf \
+        -of html -o .results/login.html \
 		-request inputs/login-req.txt \
 		-request-proto http \
 		-mode clusterbomb \
