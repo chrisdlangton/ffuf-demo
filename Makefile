@@ -143,7 +143,6 @@ login:
 		SecLists/Passwords/Common-Credentials/top-20-common-SSH-passwords.txt \
 		SecLists/Passwords/Default-Credentials/default-passwords.txt \
 		SecLists/Passwords/Keyboard-Walks/Keyboard-Combinations.txt \
-		SecLists/Passwords/Permutations/password-permutations.txt \
 		| sort -uf >.tmp.passwords
 	@cat SecLists/Usernames/cirt-default-usernames.txt \
 		SecLists/Usernames/Names/names.txt \
