@@ -1,40 +1,49 @@
 
-TARGET=http://localhost:3000
+TARGET=$(TARGET)
 
 dirs:
-	ffuf \
+	ffuf -ic -ac -c -se -t 100 \
+		-r \
+		-ignore-body \
+		-recursion \
+		-recursion-depth 4 \
 		-w SecLists/Discovery/Web-Content/dirsearch.txt \
+		-of json -o .results/dirs.json \
 		-u $(TARGET)/FUZZ
 
 urls:
-	ffuf \
+	ffuf -ic -ac -c -se -t 100 \
+		-r \
+		-ignore-body \
+		-recursion \
+		-recursion-depth 4 \
 		-w SecLists/Discovery/Web-Content/big.txt \
 		-of json -o .results/urls.json \
 		-u $(TARGET)/FUZZ
 
 args-Bo0oM:
-	 ffuf \
+	 ffuf -ic -ac -c -t 100 \
         -w SecLists/Fuzzing/fuzz-Bo0oM.txt \
         -of json -o .results/args-Bo0oM.json \
-        -u 'http://localhost:3000/rest/user/login?FUZZ=1'
+        -u '$(TARGET)/rest/user/login?FUZZ=1'
 
 args:
-	 ffuf \
+	 ffuf -ic -ac -c -t 100 \
         -w SecLists/Discovery/Web-Content/uri-from-top-55-most-popular-apps.txt \
         -of json -o .results/args.json \
-        -u 'http://localhost:3000/rest/user/login?FUZZ=1'
+        -u '$(TARGET)/rest/user/login?FUZZ=1'
 	
 sqli:
-	 ffuf \
+	 ffuf -ic -ac -c -se -t 100 \
         -w SecLists/Fuzzing/SQLi/Generic-BlindSQLi.fuzzdb.txt \
         -of json -o .results/sqli.json \
-        -u 'http://localhost:3000/rest/products/search?q=FUZZ'
+        -u '$(TARGET)/rest/products/search?q=FUZZ'
 
 swagger:
-	 ffuf \
+	 ffuf -ic -ac -c -se -t 100 \
         -w SecLists/Discovery/Web-Content/swagger.txt \
         -of json -o .results/swagger.json \
-        -u 'http://localhost:3000/FUZZ'
+        -u '$(TARGET)/FUZZ'
 
 login-leaks:
 	@cat SecLists/Passwords/500-worst-passwords.txt \
@@ -127,7 +136,7 @@ login-leaks:
 		SecLists/Usernames/top-usernames-shortlist.txt \
 		SecLists/Usernames/xato-net-10-million-usernames.txt \
 		>.tmp.usernames
-	ffuf \
+	ffuf -ic -ac -c -se -t 100 \
         -of html -o .results/login-leaks.html \
 		-request inputs/login-req.txt \
 		-request-proto http \
@@ -148,7 +157,7 @@ login:
 		SecLists/Usernames/Names/names.txt \
 		SecLists/Usernames/top-usernames-shortlist.txt \
 		| sort -uf >.tmp.usernames
-	ffuf \
+	ffuf -ic -ac -c -se -t 100 \
         -of html -o .results/login.html \
 		-request inputs/login-req.txt \
 		-request-proto http \

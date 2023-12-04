@@ -1,0 +1,782 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0"
+    />
+    <title>FFUF Report - </title>
+
+    
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+	/>
+	<link 
+	  rel="stylesheet" 
+	  type="text/css" 
+	  href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css"
+	/>
+  
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">FFUF</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        </ul>
+      </div>
+    </nav>
+
+    <main class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <br /><br />
+        <h1 class="header center ">FFUF Report</h1>
+        <div class="row center">
+
+		<pre>ffuf -ic -ac -c -se -t 100 -w SecLists/Discovery/Web-Content/swagger.txt -of html -o .results/swagger.html -u http://localhost:3000/FUZZ</pre>
+		<pre>2023-12-05T05:35:29&#43;11:00</pre>
+
+   <table id="ffufreport">
+        <thead>
+        <div style="display:none">
+|result_raw|StatusCode|FUZZ|Url|RedirectLocation|Position|ContentLength|ContentWords|ContentLines|ContentType|Duration|Resultfile|ScraperData|FfufHash|
+        </div>
+          <tr>
+              <th>Status</th>
+              <th>FUZZ</th>
+			  <th>URL</th>
+			  <th>Redirect location</th>
+              <th>Position</th>
+              <th>Length</th>
+              <th>Words</th>
+			  <th>Lines</th>
+			  <th>Type</th>
+              <th>Duration</th>
+			  <th>Resultfile</th>
+              <th>Scraper data</th>
+              <th>Ffuf Hash</th>
+          </tr>
+        </thead>
+
+        <tbody>
+			
+                <div style="display:none">
+|result_raw|301|.htaccessFJADPMUO|http://localhost:3000/api-docs|/api-docs/|11|183|7|11|text/html; charset=UTF-8|427.515631ms|||9b0c6b|
+                </div>
+                <tr class="result-301" style="background-color: #bbbbe6;">
+                    <td><font color="black" class="status-code">301</font></td>
+                    
+                        <td>.htaccessFJADPMUO</td>
+                    
+                    <td><a href="http://localhost:3000/api-docs">http://localhost:3000/api-docs</a></td>
+                    <td><a href="/api-docs/">/api-docs/</a></td>
+                    <td>11</td>
+                    <td>183</td>
+                    <td>7</td>
+					<td>11</td>
+					<td>text/html; charset=UTF-8</td>
+					<td>427.515631ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c6b</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/swagger.json|http://localhost:3000/api/swagger.json||29|3043|235|50|text/html; charset=utf-8|432.975478ms|||9b0c61d|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/swagger.json</td>
+                    
+                    <td><a href="http://localhost:3000/api/swagger.json">http://localhost:3000/api/swagger.json</a></td>
+                    <td><a href=""></a></td>
+                    <td>29</td>
+                    <td>3043</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>432.975478ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c61d</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v2/swagger.json|http://localhost:3000/api/v2/swagger.json||41|3049|235|50|text/html; charset=utf-8|432.335857ms|||9b0c629|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v2/swagger.json</td>
+                    
+                    <td><a href="http://localhost:3000/api/v2/swagger.json">http://localhost:3000/api/v2/swagger.json</a></td>
+                    <td><a href=""></a></td>
+                    <td>41</td>
+                    <td>3049</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>432.335857ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c629</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v1/swagger-ui.html|http://localhost:3000/api/v1/swagger-ui.html||37|3055|235|50|text/html; charset=utf-8|431.115174ms|||9b0c625|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v1/swagger-ui.html</td>
+                    
+                    <td><a href="http://localhost:3000/api/v1/swagger-ui.html">http://localhost:3000/api/v1/swagger-ui.html</a></td>
+                    <td><a href=""></a></td>
+                    <td>37</td>
+                    <td>3055</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>431.115174ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c625</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v1/swagger.json|http://localhost:3000/api/v1/swagger.json||35|3049|235|50|text/html; charset=utf-8|432.335805ms|||9b0c623|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v1/swagger.json</td>
+                    
+                    <td><a href="http://localhost:3000/api/v1/swagger.json">http://localhost:3000/api/v1/swagger.json</a></td>
+                    <td><a href=""></a></td>
+                    <td>35</td>
+                    <td>3049</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>432.335805ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c623</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/swagger/|http://localhost:3000/api/swagger/||28|3035|235|50|text/html; charset=utf-8|432.684969ms|||9b0c61c|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/swagger/</td>
+                    
+                    <td><a href="http://localhost:3000/api/swagger/">http://localhost:3000/api/swagger/</a></td>
+                    <td><a href=""></a></td>
+                    <td>28</td>
+                    <td>3035</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>432.684969ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c61c</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v1/swagger/|http://localhost:3000/api/v1/swagger/||34|3041|235|50|text/html; charset=utf-8|433.483171ms|||9b0c622|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v1/swagger/</td>
+                    
+                    <td><a href="http://localhost:3000/api/v1/swagger/">http://localhost:3000/api/v1/swagger/</a></td>
+                    <td><a href=""></a></td>
+                    <td>34</td>
+                    <td>3041</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>433.483171ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c622</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v2/swagger|http://localhost:3000/api/v2/swagger||39|3039|235|50|text/html; charset=utf-8|433.557262ms|||9b0c627|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v2/swagger</td>
+                    
+                    <td><a href="http://localhost:3000/api/v2/swagger">http://localhost:3000/api/v2/swagger</a></td>
+                    <td><a href=""></a></td>
+                    <td>39</td>
+                    <td>3039</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>433.557262ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c627</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/swagger|http://localhost:3000/api/swagger||27|3033|235|50|text/html; charset=utf-8|431.985041ms|||9b0c61b|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/swagger</td>
+                    
+                    <td><a href="http://localhost:3000/api/swagger">http://localhost:3000/api/swagger</a></td>
+                    <td><a href=""></a></td>
+                    <td>27</td>
+                    <td>3033</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>431.985041ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c61b</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|apidocs/swagger.json|http://localhost:3000/apidocs/swagger.json||8|3051|235|50|text/html; charset=utf-8|433.473327ms|||9b0c68|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>apidocs/swagger.json</td>
+                    
+                    <td><a href="http://localhost:3000/apidocs/swagger.json">http://localhost:3000/apidocs/swagger.json</a></td>
+                    <td><a href=""></a></td>
+                    <td>8</td>
+                    <td>3051</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>433.473327ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c68</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api|http://localhost:3000/api||46|3017|235|50|text/html; charset=utf-8|433.22063ms|||9b0c62e|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api</td>
+                    
+                    <td><a href="http://localhost:3000/api">http://localhost:3000/api</a></td>
+                    <td><a href=""></a></td>
+                    <td>46</td>
+                    <td>3017</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>433.22063ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c62e</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v2/swagger/|http://localhost:3000/api/v2/swagger/||40|3041|235|50|text/html; charset=utf-8|433.127386ms|||9b0c628|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v2/swagger/</td>
+                    
+                    <td><a href="http://localhost:3000/api/v2/swagger/">http://localhost:3000/api/v2/swagger/</a></td>
+                    <td><a href=""></a></td>
+                    <td>40</td>
+                    <td>3041</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>433.127386ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c628</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/swagger-ui/|http://localhost:3000/api/swagger-ui/||30|3041|235|50|text/html; charset=utf-8|434.547856ms|||9b0c61e|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/swagger-ui/</td>
+                    
+                    <td><a href="http://localhost:3000/api/swagger-ui/">http://localhost:3000/api/swagger-ui/</a></td>
+                    <td><a href=""></a></td>
+                    <td>30</td>
+                    <td>3041</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>434.547856ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c61e</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/swagger-ui.json|http://localhost:3000/api/swagger-ui.json||32|3049|235|50|text/html; charset=utf-8|435.455689ms|||9b0c620|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/swagger-ui.json</td>
+                    
+                    <td><a href="http://localhost:3000/api/swagger-ui.json">http://localhost:3000/api/swagger-ui.json</a></td>
+                    <td><a href=""></a></td>
+                    <td>32</td>
+                    <td>3049</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>435.455689ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c620</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v2/swagger-ui.html|http://localhost:3000/api/v2/swagger-ui.html||43|3055|235|50|text/html; charset=utf-8|434.958773ms|||9b0c62b|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v2/swagger-ui.html</td>
+                    
+                    <td><a href="http://localhost:3000/api/v2/swagger-ui.html">http://localhost:3000/api/v2/swagger-ui.html</a></td>
+                    <td><a href=""></a></td>
+                    <td>43</td>
+                    <td>3055</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>434.958773ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c62b</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v1/swagger|http://localhost:3000/api/v1/swagger||33|3039|235|50|text/html; charset=utf-8|435.942521ms|||9b0c621|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v1/swagger</td>
+                    
+                    <td><a href="http://localhost:3000/api/v1/swagger">http://localhost:3000/api/v1/swagger</a></td>
+                    <td><a href=""></a></td>
+                    <td>33</td>
+                    <td>3039</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>435.942521ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c621</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|apidocs|http://localhost:3000/apidocs||12|3025|235|50|text/html; charset=utf-8|435.550997ms|||9b0c6c|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>apidocs</td>
+                    
+                    <td><a href="http://localhost:3000/apidocs">http://localhost:3000/apidocs</a></td>
+                    <td><a href=""></a></td>
+                    <td>12</td>
+                    <td>3025</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>435.550997ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c6c</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v2/swagger-ui/|http://localhost:3000/api/v2/swagger-ui/||42|3047|235|50|text/html; charset=utf-8|436.195038ms|||9b0c62a|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v2/swagger-ui/</td>
+                    
+                    <td><a href="http://localhost:3000/api/v2/swagger-ui/">http://localhost:3000/api/v2/swagger-ui/</a></td>
+                    <td><a href=""></a></td>
+                    <td>42</td>
+                    <td>3047</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.195038ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c62a</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v1/swagger-ui.json|http://localhost:3000/api/v1/swagger-ui.json||38|3055|235|50|text/html; charset=utf-8|435.81479ms|||9b0c626|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v1/swagger-ui.json</td>
+                    
+                    <td><a href="http://localhost:3000/api/v1/swagger-ui.json">http://localhost:3000/api/v1/swagger-ui.json</a></td>
+                    <td><a href=""></a></td>
+                    <td>38</td>
+                    <td>3055</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>435.81479ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c626</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/swagger-ui.html|http://localhost:3000/api/swagger-ui.html||31|3049|235|50|text/html; charset=utf-8|436.22271ms|||9b0c61f|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/swagger-ui.html</td>
+                    
+                    <td><a href="http://localhost:3000/api/swagger-ui.html">http://localhost:3000/api/swagger-ui.html</a></td>
+                    <td><a href=""></a></td>
+                    <td>31</td>
+                    <td>3049</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.22271ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c61f</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v1/swagger-ui/|http://localhost:3000/api/v1/swagger-ui/||36|3047|235|50|text/html; charset=utf-8|436.066003ms|||9b0c624|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v1/swagger-ui/</td>
+                    
+                    <td><a href="http://localhost:3000/api/v1/swagger-ui/">http://localhost:3000/api/v1/swagger-ui/</a></td>
+                    <td><a href=""></a></td>
+                    <td>36</td>
+                    <td>3047</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.066003ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c624</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|200|api-docs/swagger.json|http://localhost:3000/api-docs/swagger.json||9|3106|422|82|text/html; charset=utf-8|436.565147ms|||9b0c69|
+                </div>
+                <tr class="result-200" style="background-color: #adea9e;">
+                    <td><font color="black" class="status-code">200</font></td>
+                    
+                        <td>api-docs/swagger.json</td>
+                    
+                    <td><a href="http://localhost:3000/api-docs/swagger.json">http://localhost:3000/api-docs/swagger.json</a></td>
+                    <td><a href=""></a></td>
+                    <td>9</td>
+                    <td>3106</td>
+                    <td>422</td>
+					<td>82</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.565147ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c69</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v1/|http://localhost:3000/api/v1/||47|3025|235|50|text/html; charset=utf-8|436.235895ms|||9b0c62f|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v1/</td>
+                    
+                    <td><a href="http://localhost:3000/api/v1/">http://localhost:3000/api/v1/</a></td>
+                    <td><a href=""></a></td>
+                    <td>47</td>
+                    <td>3025</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.235895ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c62f</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v2|http://localhost:3000/api/v2||48|3023|235|50|text/html; charset=utf-8|436.572604ms|||9b0c630|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v2</td>
+                    
+                    <td><a href="http://localhost:3000/api/v2">http://localhost:3000/api/v2</a></td>
+                    <td><a href=""></a></td>
+                    <td>48</td>
+                    <td>3023</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.572604ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c630</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v2/api-docs|http://localhost:3000/api/v2/api-docs||20|3041|235|50|text/html; charset=utf-8|436.458334ms|||9b0c614|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v2/api-docs</td>
+                    
+                    <td><a href="http://localhost:3000/api/v2/api-docs">http://localhost:3000/api/v2/api-docs</a></td>
+                    <td><a href=""></a></td>
+                    <td>20</td>
+                    <td>3041</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.458334ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c614</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v2/swagger-ui.json|http://localhost:3000/api/v2/swagger-ui.json||44|3055|235|50|text/html; charset=utf-8|436.240108ms|||9b0c62c|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v2/swagger-ui.json</td>
+                    
+                    <td><a href="http://localhost:3000/api/v2/swagger-ui.json">http://localhost:3000/api/v2/swagger-ui.json</a></td>
+                    <td><a href=""></a></td>
+                    <td>44</td>
+                    <td>3055</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.240108ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c62c</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v2/apidocs|http://localhost:3000/api/v2/apidocs||17|3039|235|50|text/html; charset=utf-8|436.50064ms|||9b0c611|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v2/apidocs</td>
+                    
+                    <td><a href="http://localhost:3000/api/v2/apidocs">http://localhost:3000/api/v2/apidocs</a></td>
+                    <td><a href=""></a></td>
+                    <td>17</td>
+                    <td>3039</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.50064ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c611</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/apidocs|http://localhost:3000/api/apidocs||15|3033|235|50|text/html; charset=utf-8|436.847102ms|||9b0c6f|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/apidocs</td>
+                    
+                    <td><a href="http://localhost:3000/api/apidocs">http://localhost:3000/api/apidocs</a></td>
+                    <td><a href=""></a></td>
+                    <td>15</td>
+                    <td>3033</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.847102ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c6f</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/api-docs|http://localhost:3000/api/api-docs||18|3035|235|50|text/html; charset=utf-8|436.794336ms|||9b0c612|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/api-docs</td>
+                    
+                    <td><a href="http://localhost:3000/api/api-docs">http://localhost:3000/api/api-docs</a></td>
+                    <td><a href=""></a></td>
+                    <td>18</td>
+                    <td>3035</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.794336ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c612</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v1/apidocs|http://localhost:3000/api/v1/apidocs||16|3039|235|50|text/html; charset=utf-8|436.952889ms|||9b0c610|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v1/apidocs</td>
+                    
+                    <td><a href="http://localhost:3000/api/v1/apidocs">http://localhost:3000/api/v1/apidocs</a></td>
+                    <td><a href=""></a></td>
+                    <td>16</td>
+                    <td>3039</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.952889ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c610</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v3|http://localhost:3000/api/v3||49|3023|235|50|text/html; charset=utf-8|436.787256ms|||9b0c631|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v3</td>
+                    
+                    <td><a href="http://localhost:3000/api/v3">http://localhost:3000/api/v3</a></td>
+                    <td><a href=""></a></td>
+                    <td>49</td>
+                    <td>3023</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.787256ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c631</td>
+                </tr>
+            
+                <div style="display:none">
+|result_raw|500|api/v1/api-docs|http://localhost:3000/api/v1/api-docs||19|3041|235|50|text/html; charset=utf-8|436.590191ms|||9b0c613|
+                </div>
+                <tr class="result-500" style="background-color: #de8dc1;">
+                    <td><font color="black" class="status-code">500</font></td>
+                    
+                        <td>api/v1/api-docs</td>
+                    
+                    <td><a href="http://localhost:3000/api/v1/api-docs">http://localhost:3000/api/v1/api-docs</a></td>
+                    <td><a href=""></a></td>
+                    <td>19</td>
+                    <td>3041</td>
+                    <td>235</td>
+					<td>50</td>
+					<td>text/html; charset=utf-8</td>
+					<td>436.590191ms</td>
+                    <td></td>
+					<td></td>
+					<td>9b0c613</td>
+                </tr>
+            
+        </tbody>
+      </table>
+
+        </div>
+        <br /><br />
+      </div>
+    </main>
+
+    
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#ffufreport').DataTable(
+            {
+                "aLengthMenu": [
+                    [250, 500, 1000, 2500, -1],
+                    [250, 500, 1000, 2500, "All"]
+                ]
+            }
+        )
+        $('select').formSelect();
+        });
+    </script>
+    <style>
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1 0 auto;
+      }
+    </style>
+  </body>
+</html>
+
+	
