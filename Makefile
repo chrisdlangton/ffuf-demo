@@ -43,3 +43,8 @@ login:
 
 juiceshop:
 	podman run -d --restart=always -p 3000:3000 docker.io/bkimminich/juice-shop:v15.3.0
+
+init:
+	git config --local diff.submodule log
+	git config --local status.submoduleSummary true
+	git submodule update --remote --merge
