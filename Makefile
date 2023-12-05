@@ -141,6 +141,7 @@ login-leaks:
 		-request inputs/login-req.txt \
 		-request-proto http \
 		-mode clusterbomb \
+		-w SecLists/Fuzzing/User-Agents/UserAgents.fuzz.txt:UAFUZZ \
 		-w .tmp.usernames:USERFUZZ \
 		-w .tmp.passwords:PASSFUZZ \
 		-mc 200
@@ -156,12 +157,13 @@ login:
 	@cat SecLists/Usernames/cirt-default-usernames.txt \
 		SecLists/Usernames/Names/names.txt \
 		SecLists/Usernames/top-usernames-shortlist.txt \
-		| sort -uf >.tmp.usernames
+		| tr "[:upper:]" "[:lower:]" | sort -uf >.tmp.usernames
 	ffuf -ic -ac -c -se -t 100 \
         -of html -o .results/login.html \
 		-request inputs/login-req.txt \
 		-request-proto http \
 		-mode clusterbomb \
+		-w SecLists/Fuzzing/User-Agents/UserAgents.fuzz.txt:UAFUZZ \
 		-w .tmp.usernames:USERFUZZ \
 		-w .tmp.passwords:PASSFUZZ \
 		-mc 200
