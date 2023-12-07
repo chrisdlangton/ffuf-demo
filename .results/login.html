@@ -41,17 +41,17 @@
         <h1 class="header center ">FFUF Report</h1>
         <div class="row center">
 
-		<pre>ffuf -of html -o .results/login.html -request inputs/login-req.txt -request-proto http -mode clusterbomb -w .tmp.usernames:USERFUZZ -w .tmp.passwords:PASSFUZZ -mc 200</pre>
-		<pre>2023-12-05T05:31:08&#43;11:00</pre>
+		<pre>ffuf -ic -ac -c -se -t 100 -of html -o .results/login.html -request inputs/login-req.txt -request-proto http -mode clusterbomb -w .tmp.ua:UAFUZZ -w .tmp.usernames:USERFUZZ -w .tmp.passwords:PASSFUZZ -mc 200</pre>
+		<pre>2023-12-05T13:50:26&#43;11:00</pre>
 
    <table id="ffufreport">
         <thead>
         <div style="display:none">
-|result_raw|StatusCode|USERFUZZ|PASSFUZZ|Url|RedirectLocation|Position|ContentLength|ContentWords|ContentLines|ContentType|Duration|Resultfile|ScraperData|FfufHash|
+|result_raw|StatusCode|UAFUZZ|USERFUZZ|PASSFUZZ|Url|RedirectLocation|Position|ContentLength|ContentWords|ContentLines|ContentType|Duration|Resultfile|ScraperData|FfufHash|
         </div>
           <tr>
               <th>Status</th>
-              <th>USERFUZZ</th>              <th>PASSFUZZ</th>
+              <th>UAFUZZ</th>              <th>USERFUZZ</th>              <th>PASSFUZZ</th>
 			  <th>URL</th>
 			  <th>Redirect location</th>
               <th>Position</th>

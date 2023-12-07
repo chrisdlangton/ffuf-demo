@@ -1,0 +1,19 @@
+[general]
+    colors = true
+
+[http]
+    headers = [
+        "X-Internal-Reason: Tool FFUF",
+    ]
+#    proxyurl = "http://127.0.0.1:8999"
+
+[input]
+    wordlists = [
+        "SecLists/Discovery/Web-Content/dirsearch.txt:DIRFUZZ",
+        "SecLists/Fuzzing/User-Agents/UserAgents.fuzz.txt:UAFUZZ",
+        "SecLists/Discovery/Web-Content/swagger.txt:OASFUZZ",
+        "SecLists/Fuzzing/SQLi/Generic-BlindSQLi.fuzzdb.txt:BLINDSQLIFUZZ",
+        "SecLists/Discovery/Web-Content/big.txt:PATHSBGFUZZ",
+        "SecLists/Fuzzing/fuzz-Bo0oM.txt:ARGSBGFUZZ",
+        "SecLists/Discovery/Web-Content/uri-from-top-55-most-popular-apps.txt:ARGSSMFUZZ",
+    ]

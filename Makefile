@@ -1,51 +1,70 @@
+SHELL := /bin/bash
+.DEFAULT_GOAL := help
+.PHONY: help
+primary := '\033[1;36m'
+err := '\033[0;31m'
+bold := '\033[1m'
+clear := '\033[0m'
 
-TARGET=$(TARGET)
+-include .env
+export $(shell sed 's/=.*//' .env)
+-include .env.local
+export $(shell sed 's/=.*//' .env.local)
 
-dirs:
-	ffuf -ic -ac -c -se -t 100 \
+ifndef TARGET
+TARGET=http://localhost:3000
+endif
+
+ifndef FFUF_THREADS
+FFUF_THREADS=40
+endif
+
+help: ## This help.
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
+env:
+	@echo -e $(bold)$(primary)TARGET$(clear) = $(TARGET)
+	@echo -e $(bold)$(primary)FFUF_THREADS$(clear) = $(FFUF_THREADS)
+
+dirs: ## /DIRFUZZ > .results/dirs.json
+	ffuf -ic -ac -se -t $(FFUF_THREADS) \
 		-r \
 		-ignore-body \
 		-recursion \
 		-recursion-depth 4 \
-		-w SecLists/Discovery/Web-Content/dirsearch.txt \
 		-of json -o .results/dirs.json \
-		-u $(TARGET)/FUZZ
+		-u $(TARGET)/DIRFUZZ
 
-urls:
-	ffuf -ic -ac -c -se -t 100 \
+urls: ## /PATHSBGFUZZ > .results/urls.json
+	ffuf -ic -ac -se -t $(FFUF_THREADS) \
 		-r \
 		-ignore-body \
 		-recursion \
 		-recursion-depth 4 \
-		-w SecLists/Discovery/Web-Content/big.txt \
 		-of json -o .results/urls.json \
-		-u $(TARGET)/FUZZ
+		-u $(TARGET)/PATHSBGFUZZ
 
-args-Bo0oM:
-	 ffuf -ic -ac -c -t 100 \
-        -w SecLists/Fuzzing/fuzz-Bo0oM.txt \
+args-Bo0oM: ## /rest/user/login?ARGSBGFUZZ=1 > .results/args-Bo0oM.json
+	 ffuf -ic -ac -t $(FFUF_THREADS) \
         -of json -o .results/args-Bo0oM.json \
-        -u '$(TARGET)/rest/user/login?FUZZ=1'
+        -u '$(TARGET)/rest/user/login?ARGSBGFUZZ=1'
 
-args:
-	 ffuf -ic -ac -c -t 100 \
-        -w SecLists/Discovery/Web-Content/uri-from-top-55-most-popular-apps.txt \
+args: ## /rest/user/login?ARGSSMFUZZ=1 > .results/args.json
+	 ffuf -ic -ac -t $(FFUF_THREADS) \
         -of json -o .results/args.json \
-        -u '$(TARGET)/rest/user/login?FUZZ=1'
+        -u '$(TARGET)/rest/user/login?ARGSSMFUZZ=1'
 	
-sqli:
-	 ffuf -ic -ac -c -se -t 100 \
-        -w SecLists/Fuzzing/SQLi/Generic-BlindSQLi.fuzzdb.txt \
+sqli: ## /rest/products/search?q=BLINDSQLIFUZZ > .results/sqli.json
+	 ffuf -ic -ac -se -t $(FFUF_THREADS) \
         -of json -o .results/sqli.json \
-        -u '$(TARGET)/rest/products/search?q=FUZZ'
+        -u '$(TARGET)/rest/products/search?q=BLINDSQLIFUZZ'
 
-swagger:
-	 ffuf -ic -ac -c -se -t 100 \
-        -w SecLists/Discovery/Web-Content/swagger.txt \
+swagger: ## /OASFUZZ > .results/swagger.json
+	 ffuf -ic -ac -se -t $(FFUF_THREADS) \
         -of json -o .results/swagger.json \
-        -u '$(TARGET)/FUZZ'
+        -u '$(TARGET)/OASFUZZ'
 
-login-leaks:
+login-leaks: ## WARN: uses breach data and will run for days on a laptop > .results/login-leaks.html
 	@cat SecLists/Passwords/500-worst-passwords.txt \
 		SecLists/Passwords/2020-200_most_used_passwords.txt \
 		SecLists/Passwords/clarkson-university-82.txt \
@@ -136,18 +155,17 @@ login-leaks:
 		SecLists/Usernames/top-usernames-shortlist.txt \
 		SecLists/Usernames/xato-net-10-million-usernames.txt \
 		>.tmp.usernames
-	ffuf -ic -ac -c -se -t 100 \
+	ffuf -ic -ac -se -t $(FFUF_THREADS) \
         -of html -o .results/login-leaks.html \
 		-request inputs/login-req.txt \
 		-request-proto http \
 		-mode clusterbomb \
-		-w SecLists/Fuzzing/User-Agents/UserAgents.fuzz.txt:UAFUZZ \
 		-w .tmp.usernames:USERFUZZ \
 		-w .tmp.passwords:PASSFUZZ \
 		-mc 200
 	@rm .tmp.usernames .tmp.passwords
 
-login:
+login:  ## WARN: demo, fuzzers are poor choice for this task > .results/login.html
 	@cat SecLists/Passwords/500-worst-passwords.txt \
 		SecLists/Passwords/Common-Credentials/100k-most-used-passwords-NCSC.txt \
 		SecLists/Passwords/Common-Credentials/top-20-common-SSH-passwords.txt \
@@ -158,21 +176,20 @@ login:
 		SecLists/Usernames/Names/names.txt \
 		SecLists/Usernames/top-usernames-shortlist.txt \
 		| tr "[:upper:]" "[:lower:]" | sort -uf >.tmp.usernames
-	ffuf -ic -ac -c -se -t 100 \
+	ffuf -ic -ac -se -t $(FFUF_THREADS) \
         -of html -o .results/login.html \
 		-request inputs/login-req.txt \
 		-request-proto http \
 		-mode clusterbomb \
-		-w SecLists/Fuzzing/User-Agents/UserAgents.fuzz.txt:UAFUZZ \
 		-w .tmp.usernames:USERFUZZ \
 		-w .tmp.passwords:PASSFUZZ \
 		-mc 200
 	@rm .tmp.usernames .tmp.passwords
 
-juiceshop:
+juiceshop: ## Runt he target OWASP Juice Shop app with podman
 	podman run -d --restart=always -p 3000:3000 docker.io/bkimminich/juice-shop:v15.3.0
 
-init:
+init: ## git stuff for submodule management
 	git config --local diff.submodule log
 	git config --local status.submoduleSummary true
 	git submodule update --remote --merge
